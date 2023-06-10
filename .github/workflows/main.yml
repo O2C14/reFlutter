@@ -61,9 +61,9 @@ jobs:
           path: engine
       
       # Publish releases
-      - name: patch code
-          cd $ROOT_DIR
-          cd customEngine
+      #- name: patch code
+       #   cd $ROOT_DIR
+       #   cd customEngine
           #reflutter ${{env.SNAPSHOT_HASH}} -l
       - name: ninja build Flutter.framework
         run: export PATH=$PATH:`pwd`/depot_tools && sudo xcode-select -s /Applications/Xcode.app && customEngine/src/flutter/tools/gn --ios --ios-cpu=arm64 --runtime-mode=release && ninja -C customEngine/src/out/ios_release
