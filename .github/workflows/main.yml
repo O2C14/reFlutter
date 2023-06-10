@@ -51,8 +51,8 @@ jobs:
       - name: Archive customEngine and engine
         uses: actions/upload-artifact@v2
         with:
-          name: Custom Engine
-          path: customEngine
+          name: src
+          path: src
       - name: Archive Engine
         uses: actions/upload-artifact@v2
         with:
