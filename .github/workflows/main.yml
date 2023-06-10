@@ -42,8 +42,6 @@ jobs:
           cd engine
           git fetch origin 9aa7816315095c86410527932918c718cb35e7d6
           git reset --hard FETCH_HEAD
-          #reflutter ${{env.SNAPSHOT_HASH}} -l
-          #echo 'reflutter' > REFLUTTER
           cd $ROOT_DIR
           mkdir customEngine
           cd customEngine
