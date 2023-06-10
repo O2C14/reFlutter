@@ -54,29 +54,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Custom Engine
-          path: $ROOT_DIR/customEngine
+          path: customEngine
       - name: Archive Engine
         uses: actions/upload-artifact@v2
         with:
           name: Engine
           path: engine
-      
-      # Publish releases
-      #- name: patch code
-       #   cd $ROOT_DIR
-       #   cd customEngine
-          #reflutter ${{env.SNAPSHOT_HASH}} -l
-      - name: ninja build Flutter.framework
-        run: export PATH=$PATH:`pwd`/depot_tools && sudo xcode-select -s /Applications/Xcode.app && customEngine/src/flutter/tools/gn --ios --ios-cpu=arm64 --runtime-mode=release && ninja -C customEngine/src/out/ios_release
-      - name: ninja build libflutter_arm64
-        run: export PATH=$PATH:`pwd`/depot_tools && customEngine/src/flutter/tools/gn --android --android-cpu=arm64 --runtime-mode=release && ninja -C customEngine/src/out/android_release_arm64
-      - name: ninja build libflutter_arm
-        run: export PATH=$PATH:`pwd`/depot_tools && customEngine/src/flutter/tools/gn --android --android-cpu=arm --runtime-mode=release && ninja -C customEngine/src/out/android_release
-      - name: ninja build libflutter_x64
-        run: export PATH=$PATH:`pwd`/depot_tools && customEngine/src/flutter/tools/gn --android --android-cpu=x64 --runtime-mode=release && ninja -C customEngine/src/out/android_release_x64
-      - name: Move to release
-        run: |
-          cp customEngine/src/out/ios_release/Flutter.framework/Flutter Flutter
-          cp customEngine/src/out/android_release_arm64/lib.stripped/libflutter.so libflutter_arm64.so 2>/dev/null || :
-          cp customEngine/src/out/android_release/lib.stripped/libflutter.so libflutter_arm.so 2>/dev/null || :
-          cp customEngine/src/out/android_release_x64/lib.stripped/libflutter.so libflutter_x64.so 2>/dev/null || :
