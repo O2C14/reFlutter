@@ -47,12 +47,16 @@ jobs:
           cd customEngine
           echo 'solutions = [{"managed": False,"name": "src/flutter","url": "'$ROOT_DIR/engine'","custom_deps": {},"deps_file": "DEPS","safesync_url": "",},]' > .gclient
           gclient sync
+      - name: pack Custom Engine
+        run: |
+          cd customEngine
+          tar cvzf customEngine.tar.gz *
       # Archive customEngine and engine directories as artifacts
       - name: Archive customEngine and engine
         uses: actions/upload-artifact@v2
         with:
-          name: src
-          path: src
+          name: Custom Engine
+          path: customEngine.tar.gz
       - name: Archive Engine
         uses: actions/upload-artifact@v2
         with:
