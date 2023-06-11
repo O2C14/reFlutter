@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Custom Engine
-          path: $ROOT_DIR/customEngine.tar.gz
+          path: customEngine/customEngine.tar.gz
       - name: Archive Engine
         uses: actions/upload-artifact@v2
         with:
